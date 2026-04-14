@@ -1,14 +1,17 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 interface VerticalStripProps {
   gradient: string;
   value: number;
   onChange: (v: number) => void;
+  className?: string;
+  width?: number;
 }
 
-export function VerticalStrip({ gradient, value, onChange }: VerticalStripProps) {
+export function VerticalStrip({ gradient, value, onChange, className, width = 44 }: VerticalStripProps) {
   const ref = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
 
@@ -31,12 +34,12 @@ export function VerticalStrip({ gradient, value, onChange }: VerticalStripProps)
   return (
     <div
       ref={ref}
-      className="relative flex-shrink-0 rounded-2xl cursor-pointer"
-      style={{ background: gradient, width: 44, touchAction: "none" }}
-      onMouseDown={e => { dragging.current = true; clamp(e.clientY); }}
+      className={cn("relative flex-shrink-0 rounded-2xl cursor-pointer", className)}
+      style={{ background: gradient, width, touchAction: "none" }}
+      onMouseDown={e => { e.stopPropagation(); dragging.current = true; clamp(e.clientY); }}
       onMouseMove={e => { if (dragging.current) clamp(e.clientY); }}
-      onTouchStart={e => { e.preventDefault(); dragging.current = true; clamp(e.touches[0].clientY); }}
-      onTouchMove={e => { e.preventDefault(); if (dragging.current) clamp(e.touches[0].clientY); }}
+      onTouchStart={e => { e.stopPropagation(); e.preventDefault(); dragging.current = true; clamp(e.touches[0].clientY); }}
+      onTouchMove={e => { e.stopPropagation(); e.preventDefault(); if (dragging.current) clamp(e.touches[0].clientY); }}
     >
       <div
         className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
