@@ -201,8 +201,8 @@ function ColorOrb() {
 function Card({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
   return (
     <div
-      className="w-full overflow-hidden"
-      style={{ background: CARD_BG, borderRadius: 24, maxWidth: 440, ...style }}
+      className="w-full flex flex-col flex-1 sm:flex-none overflow-hidden sm:rounded-3xl sm:max-w-[440px]"
+      style={{ background: CARD_BG, ...style }}
     >
       {children}
     </div>
@@ -319,9 +319,9 @@ export default function Home() {
 
   if (phase === "start") {
     return (
-      <main className="h-full flex flex-col items-center justify-center p-4" style={{ background: PAGE_BG }}>
+      <main className="h-full flex flex-col sm:items-center sm:justify-center sm:p-4" style={{ background: PAGE_BG }}>
         <Card>
-          <div className="flex flex-col items-center gap-6 px-8 py-12">
+          <div className="flex flex-1 flex-col items-center justify-center gap-6 px-8 py-12">
             <ColorOrb />
 
             <div className="text-center">
@@ -349,9 +349,9 @@ export default function Home() {
     const textCol  = bright > 140 ? "rgba(0,0,0,0.45)" : "rgba(255,255,255,0.5)";
 
     return (
-      <main className="h-full flex flex-col items-center justify-center p-4" style={{ background: PAGE_BG }}>
+      <main className="h-full flex flex-col sm:items-center sm:justify-center sm:p-4" style={{ background: PAGE_BG }}>
         <Card style={{ background: rgbStr(currentTarget) }}>
-          <div className="flex flex-col justify-between p-6" style={{ minHeight: 380 }}>
+          <div className="flex flex-1 flex-col justify-between p-6">
             {/* Top */}
             <span style={{ color: textCol, fontSize: "0.75rem", fontWeight: 500 }}>
               {roundIndex + 1}/{TOTAL_ROUNDS}
@@ -385,9 +385,9 @@ export default function Home() {
     const labelCol = previewBright > 140 ? "rgba(0,0,0,0.4)" : "rgba(255,255,255,0.45)";
 
     return (
-      <main className="h-full flex flex-col items-center justify-center p-4" style={{ background: PAGE_BG }}>
+      <main className="h-full flex flex-col sm:items-center sm:justify-center sm:p-4" style={{ background: PAGE_BG }}>
         <Card>
-          <div className="flex gap-3 p-4" style={{ minHeight: 400 }}>
+          <div className="flex flex-1 gap-3 p-4">
             {/* Hue strip */}
             <VerticalStrip gradient={hueGrad} value={hueY} onChange={setHueY} />
 
@@ -443,10 +443,10 @@ export default function Home() {
     const msg      = messages[msgIdx];
 
     return (
-      <main className="h-full flex flex-col items-center justify-center p-4" style={{ background: PAGE_BG }}>
+      <main className="h-full flex flex-col sm:items-center sm:justify-center sm:p-4" style={{ background: PAGE_BG }}>
         <Card>
           {/* Your guess — top half */}
-          <div className="relative flex flex-col justify-between p-5" style={{ background: rgbStr(guess), minHeight: 200 }}>
+          <div className="relative flex flex-1 flex-col justify-between p-5" style={{ background: rgbStr(guess) }}>
             <div className="flex justify-between items-start">
               <div>
                 <p style={{ color: gLabel, fontSize: "0.6rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em" }}>
@@ -469,7 +469,7 @@ export default function Home() {
           </div>
 
           {/* Original — bottom half */}
-          <div className="relative flex flex-col justify-between p-5" style={{ background: rgbStr(currentRound.target), minHeight: 180 }}>
+          <div className="relative flex flex-1 flex-col justify-between p-5" style={{ background: rgbStr(currentRound.target) }}>
             <div>
               <p style={{ color: tLabel, fontSize: "0.6rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em" }}>
                 Original
@@ -501,9 +501,9 @@ export default function Home() {
     const max    = TOTAL_ROUNDS * 100;
 
     return (
-      <main className="h-full flex flex-col items-center justify-center p-4" style={{ background: PAGE_BG }}>
+      <main className="h-full flex flex-col sm:items-center sm:justify-center sm:p-4" style={{ background: PAGE_BG }}>
         <Card>
-          <div className="flex flex-col gap-6 p-7">
+          <div className="flex flex-1 flex-col gap-6 p-7">
             {/* Header */}
             <div>
               <p className="text-white/30 text-xs uppercase tracking-widest mb-1">Final Score</p>
