@@ -37,7 +37,7 @@ export function ResultScreen({ guess, target, score, roundIndex, isLast, onNext 
     <GameCard>
       {/* Your selection */}
       <div
-        className="relative flex flex-1 flex-col justify-between p-6"
+        className="relative flex flex-1 flex-col justify-between p-8"
         style={{ background: rgbStr(guess) }}
       >
         <div className="flex justify-between items-start">
@@ -74,7 +74,7 @@ export function ResultScreen({ guess, target, score, roundIndex, isLast, onNext 
 
       {/* Original */}
       <div
-        className="relative flex flex-1 flex-col justify-between p-6"
+        className="relative flex flex-1 flex-col justify-between p-8"
         style={{ background: rgbStr(target) }}
       >
         <div className="flex flex-col gap-1">
