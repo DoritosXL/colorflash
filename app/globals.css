@@ -15,9 +15,6 @@ body {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background: #0f0f0f;
-  color: #fff;
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
 }
@@ -27,70 +24,48 @@ main {
   height: 100%;
 }
 
-/* Smooth color transitions */
-.color-fade {
-  transition: background-color 0.3s ease;
+/* ── home page orb animations ───────────────────────────────────────────── */
+@keyframes hue-drift {
+  from { filter: blur(80px) hue-rotate(0deg) saturate(1.2); }
+  to   { filter: blur(80px) hue-rotate(360deg) saturate(1.2); }
+}
+@keyframes hue-drift-reverse {
+  from { filter: blur(80px) hue-rotate(360deg) saturate(1.4); }
+  to   { filter: blur(80px) hue-rotate(0deg) saturate(1.4); }
+}
+@keyframes float-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -40px) scale(1.08); }
+  66%       { transform: translate(-20px, 20px) scale(0.95); }
+}
+@keyframes float-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-40px, 30px) scale(0.92); }
+  66%       { transform: translate(25px, -25px) scale(1.1); }
+}
+@keyframes float-c {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(20px, 30px) scale(1.06); }
 }
 
-/* Timer bar */
-.timer-bar {
-  transition: width linear;
+.orb-a {
+  animation: hue-drift 12s linear infinite, float-a 9s ease-in-out infinite;
+}
+.orb-b {
+  animation: hue-drift-reverse 10s linear infinite, float-b 11s ease-in-out infinite;
+}
+.orb-c {
+  animation: hue-drift 16s linear infinite, float-c 7s ease-in-out infinite;
 }
 
-/* Cursor for canvas */
-canvas {
-  cursor: crosshair;
-  touch-action: none;
+/* ── picker hint fade ───────────────────────────────────────────────────── */
+@keyframes fade-out-hint {
+  0%   { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { opacity: 0; }
 }
-
-/* Hue slider */
-input[type="range"].hue-slider {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 28px;
-  border-radius: 14px;
-  outline: none;
-  cursor: pointer;
-  background: linear-gradient(
-    to right,
-    hsl(0, 100%, 50%),
-    hsl(30, 100%, 50%),
-    hsl(60, 100%, 50%),
-    hsl(90, 100%, 50%),
-    hsl(120, 100%, 50%),
-    hsl(150, 100%, 50%),
-    hsl(180, 100%, 50%),
-    hsl(210, 100%, 50%),
-    hsl(240, 100%, 50%),
-    hsl(270, 100%, 50%),
-    hsl(300, 100%, 50%),
-    hsl(330, 100%, 50%),
-    hsl(360, 100%, 50%)
-  );
-  border: 2px solid rgba(255, 255, 255, 0.2);
-}
-
-input[type="range"].hue-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: white;
-  border: 3px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-  cursor: pointer;
-}
-
-input[type="range"].hue-slider::-moz-range-thumb {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: white;
-  border: 3px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-  cursor: pointer;
+.hint-fade {
+  animation: fade-out-hint 2.5s ease forwards;
 }
 
 @theme inline {
