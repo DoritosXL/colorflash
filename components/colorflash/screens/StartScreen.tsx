@@ -27,7 +27,7 @@ export function StartScreen({ onStart }: StartScreenProps) {
           </p>
         </div>
 
-        <div className="pb-4">
+        <div className="pb-2">
           <CircleBtn onClick={onStart} size={60}>
             <ArrowRight size={20} />
           </CircleBtn>

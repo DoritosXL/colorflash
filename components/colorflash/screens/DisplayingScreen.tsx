@@ -19,7 +19,7 @@ export function DisplayingScreen({ target, countdown, roundIndex }: DisplayingSc
     <GameCard style={{ background: rgbStr(target) }}>
       <div className="flex flex-1 flex-col justify-between p-6">
         {/* Round label */}
-        <div className="pt-2 pl-2">
+        <div className="pt-1 pl-1">
           <span
             className="text-xs font-semibold uppercase tracking-widest"
             style={{ color: textCol }}
