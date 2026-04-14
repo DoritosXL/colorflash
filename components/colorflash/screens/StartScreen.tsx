@@ -12,7 +12,7 @@ interface StartScreenProps {
 export function StartScreen({ onStart }: StartScreenProps) {
   return (
     <GameCard>
-      <div className="flex flex-1 flex-col items-center justify-center gap-8 px-8 pt-16 pb-16">
+      <div className="flex flex-1 flex-col items-center justify-center gap-8 px-8 py-12">
         <ColorOrb />
 
         <div className="text-center">
@@ -27,9 +27,11 @@ export function StartScreen({ onStart }: StartScreenProps) {
           </p>
         </div>
 
-        <CircleBtn onClick={onStart} size={60}>
-          <ArrowRight size={20} />
-        </CircleBtn>
+        <div className="pb-4">
+          <CircleBtn onClick={onStart} size={60}>
+            <ArrowRight size={20} />
+          </CircleBtn>
+        </div>
       </div>
     </GameCard>
   );
