@@ -72,7 +72,7 @@ export function GuessingScreen({
     <GameCard className="sm:max-w-[560px]">
       <div
         ref={areaRef}
-        className="relative flex flex-1"
+        className="relative flex flex-1 sm:min-h-[520px]"
         style={{ background: rgbStr(guessRgb), touchAction: "none", cursor: "crosshair" }}
         onMouseDown={e => startGesture(e.clientX, e.clientY)}
         onMouseMove={e => { if (gesture.current) moveGesture(e.clientX, e.clientY); }}
